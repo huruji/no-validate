@@ -8,6 +8,14 @@ const config = {
         filename: 'nov8n.js',
         path: path.resolve(__dirname, 'dist')
     },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          use: 'babel-loader'
+        }
+      ]
+    },
     mode: 'production',
 }
 
