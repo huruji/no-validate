@@ -1,9 +1,20 @@
 {
   "root": true,
-  "rules": {
-
+  "extends": "airbnb",
+  "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
   },
-  "globals": {
-
+  "plugins": [
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+        "impliedStrict": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
   }
 }

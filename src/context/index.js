@@ -1,4 +1,5 @@
 class Context {
+
   constructor(rules = [], modifies = {}) {
       this.rules = rules;
       this.modifies = modifies;
