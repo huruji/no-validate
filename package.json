@@ -5,19 +5,29 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
+  "pre-commit": [
+    "test"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "pre-commit": "^1.2.2",
+    "regenerator-runtime": "^0.12.1",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2"
   }

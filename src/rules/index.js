@@ -8,7 +8,7 @@ const rules = {
     return value => value == target;
   },
   length(min, max) {
-    return value => value.length >= min && valu.length <= (max || min);
+    return value => value.length >= min && value.length <= (max || min);
   },
   minLength(len) {
     return value => value.length >= len;
