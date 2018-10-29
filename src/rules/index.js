@@ -64,6 +64,12 @@ const rules = {
   mail() {
     return value => emailRegex.test(value);
   },
+  lower() {
+    return value => value.toLowerCase() === value
+  },
+  upper() {
+    return value => value.toUpperCase() === value
+  }
 };
 
 export default rules;
