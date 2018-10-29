@@ -1,6 +1,6 @@
-import validation from '../index';
+import validation from '../index'
 
-const noV = validation;
+const noV = validation
 
 
 test('equal', () => {
