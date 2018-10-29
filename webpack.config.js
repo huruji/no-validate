@@ -5,7 +5,7 @@ const config = {
     main: './index.js'
   },
   output: {
-    filename: 'nov8n.js',
+    filename: 'noV.js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -19,6 +19,6 @@ const config = {
 
 const serverConfig = Object.assign({}, config);
 serverConfig.target = 'node';
-serverConfig.output.filename = 'nov8n.node.js';
+serverConfig.output.filename = 'noV.node.js';
 
 module.exports = [config, serverConfig];
