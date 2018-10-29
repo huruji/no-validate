@@ -25,7 +25,7 @@ const rules = {
   startWith(target) {
     return value => value[0] === target;
   },
-  endwidth(target) {
+  endWith(target) {
     return value => value[value.length - 1] === target;
   },
   pattern(target) {
@@ -61,7 +61,7 @@ const rules = {
   positive() {
     return value => value >= 0;
   },
-  isEmail() {
+  mail() {
     return value => emailRegex.test(value);
   },
 };
