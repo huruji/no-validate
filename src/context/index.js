@@ -36,6 +36,21 @@ class Context {
     return result;
   }
 
+  testAll(value) {
+    const result = [];
+    for (let i = 0; i < this.rules.length; i++) {
+      let fn = this.rules[i];
+      if (this.modifies[i]) {
+        for (let j = 0; j < this.modifies[i].length; j++) {
+          fn = this.modifies[i][j].apply(this)(fn);
+        }
+      }
+      result.push(fn(value));
+    }
+    return result;
+  }
+
+
   clone() {
     return new Context(this.rules.slice(), Object.assign({}, this.modifies));
   }
