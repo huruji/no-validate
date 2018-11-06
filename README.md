@@ -30,3 +30,6 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
  ** equal ** | 等于 | noV().equal().test(1)
  ** gt **  | 大于 | noV().gt(6).test(7)
  ** gte ** | 大于或等于 | noV().gte(6).test(6)
+ ** lt ** | 小于 | noV().lt(6).test(5)
+ ** lte ** | 小于或等于 | noV().lte(6).test(6)
+ ** 
