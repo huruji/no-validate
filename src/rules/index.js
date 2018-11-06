@@ -80,7 +80,16 @@ const rules = {
   base64() {
 
   },
-  json() {},
+  json() {
+    return (value) => {
+      try {
+        JSON.parse(value);
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
+  },
   empty() {
 
   },
