@@ -98,9 +98,9 @@ test('rules positive', () => {
 })
 
 test('rules mail', () => {
-  expect(noV().mail().test('594613537@qq.com')).toBe(true);
-  expect(noV().mail().test('nov_support@163.com')).toBe(true);
-  expect(noV().mail().test('huruji3#gmail.com')).toBe(false);
+  expect(noV().email().test('594613537@qq.com')).toBe(true);
+  expect(noV().email().test('nov_support@163.com')).toBe(true);
+  expect(noV().email().test('huruji3#gmail.com')).toBe(false);
 })
 
 test('modifies every', () => {
