@@ -25,7 +25,7 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 ### 规则（Rule）
 
 #### Number
-
+|           |            | 例子                  |
 | --------- | ---------- | --------------------- |
 | **exact** | 全等       | noV().exact().test(6) |
 | **equal** | 等于       | noV().equal().test(1) |
