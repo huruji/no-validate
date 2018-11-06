@@ -89,6 +89,24 @@ const rules = {
   },
   falsy() {
     return value => !value
+  },
+  uaIOS() {
+
+  },
+  uaAndroid() {
+
+  },
+  uaWX() {
+
+  },
+  uaQQ() {
+
+  },
+  before() {
+
+  },
+  after() {
+
   }
 };
 
