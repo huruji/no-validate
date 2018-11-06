@@ -80,6 +80,10 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 | **endWith(value)**   | 数组最后一个元素 | `noV().endWith('t').test(['n', 'o', 'V'])`   |
 
 ### 修饰符
-
+|            |                                                       | 例子                                              |
+| ---------- | ----------------------------------------------------- | ------------------------------------------------- |
+| **.not**   | 对接下来的规则取反                                    | `noV().not.email().test(‘huruji#gmail.com’)`    |
+| **.some**  | 对接下来的规则使用some（有符合规则的数据则返回true）  | `noV().some.minLength(2).test(['nov', 'v', 'v'])` |
+| **.every** | 对接下来的规则使用every（所有数据符合规则则返回true） | `noV().every.gt(6).test([1, 2, 3, 8])`            |
 
 ### 校验
