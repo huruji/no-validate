@@ -29,7 +29,7 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 #### Number
 |                     |            | 例子                       |
 | ------------------- | ---------- | -------------------------- |
-| **exact(value)**    | 全等       | noV().exact(6).test(6)     |
+| **exact(value)**    | 全等       | `noV().exact(6).test(6)`   |
 | **equal(value)**    | 等于       | noV().equal(1).test(1)     |
 | **gt(value)**       | 大于       | noV().gt(6).test(7)        |
 | **gte(value)**      | 大于或等于 | noV().gte(6).test(6)       |
