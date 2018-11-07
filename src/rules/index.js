@@ -3,7 +3,8 @@ import deleteKey from '../utils/deleteKey';
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 const phoneRegex = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$/
-
+const hexRegex = /^[0-9A-F]{3}$|^[0-9A-F]{6}$/i;
+const ipRegex = /^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})$/;
 const rules = {
   exact(target) {
     return value => value === target;
@@ -172,6 +173,38 @@ const rules = {
   boolean() {
     return value => typeof value === 'boolean'
   },
-};
+  float() {
+    return value => value % 1 !== 0
+  },
+  nan() {
+    return value => Number.isNaN(value)
+  },
+  null() {
+    return value => value === null
+  },
+  object() {
+    return value => (typeof value === 'object' && !Array.isArray(value) && value !== null)
+  },
+  unique() {
+    return value => [...new Set(value)].length === value.length
+  },
+  contains(search) {
+    return (value) => {
+      let result = true;
+      if (Array.isArray(search)) {
+        result = search.every(e => value.indexOf(e) > -1)
+      } else {
+        result = value.indexOf(search) > -1
+      }
+      return result
+    }
+  },
+  hex() {
+    return value => hexRegex.test(value)
+  },
+  ip() {
+    return value => ipRegex.test(value)
+  }
+}
 
 export default rules;
