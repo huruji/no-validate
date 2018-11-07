@@ -1,3 +1,6 @@
+import utils from '../utils'
+import deleteKey from '../utils/deleteKey';
+
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 const phoneRegex = /^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$/
 
@@ -90,9 +93,6 @@ const rules = {
       }
     }
   },
-  empty() {
-
-  },
   truthy() {
     return value => !!value
   },
@@ -116,6 +116,49 @@ const rules = {
   },
   after() {
 
+  },
+  type(ty) {
+    return value => Object.prototype.toString.call(value).march(/^\[object\s(.*)\]$/)[1] === ty.toLowerCase()
+  },
+  empty() {
+    return (value) => {
+      let result = false;
+      if (typeof value === 'string' || Array.isArray(value)) {
+        result = !!value.length
+      } else if (typeof value === 'object') {
+        result = !!Object.keys(value).length;
+      }
+      return result;
+    }
+  },
+  falsyObj(defObj) {
+    return function check(value, del = true) {
+      let result = true;
+      if (typeof value === 'object') {
+        const tempV = Object.assign({}, value);
+
+        if (del) {
+          const keys = Object.keys(defObj);
+          for (let i = 0; i < keys.length; i++) {
+            if (utils.get(tempV, `${keys[i]}`) !== defObj[keys[i]]) {
+              return false;
+            }
+            deleteKey(tempV, `${keys[i]}`)
+          }
+        }
+
+        const tempVKeys = Object.keys(tempV);
+
+        for (let i = 0; i < tempVKeys.length; i++) {
+          if (typeof tempV[tempVKeys[i]] === 'object') {
+            result = check(tempV[tempVKeys[i]], false);
+            if (!result) break
+          }
+        }
+      } else if (value !== null && value !== undefined && value !== '') result = false;
+
+      return result
+    }
   }
 };
 

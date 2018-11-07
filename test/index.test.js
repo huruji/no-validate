@@ -97,10 +97,21 @@ test('rules positive', () => {
   expect(noV().positive().test(4)).toBe(true)
 })
 
-test('rules mail', () => {
+test('rules email', () => {
   expect(noV().email().test('594613537@qq.com')).toBe(true);
   expect(noV().email().test('nov_support@163.com')).toBe(true);
   expect(noV().email().test('huruji3#gmail.com')).toBe(false);
+})
+
+test('rules falsyObj', () => {
+  expect(noV().falsyObj({
+    'a.b': 2
+  }).test({
+    a: {
+      b: 2,
+      c: null
+    }
+  })).toBe(true)
 })
 
 test('modifies every', () => {

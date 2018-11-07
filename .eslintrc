@@ -20,6 +20,13 @@
     "semi": 0,
     "func-names": 0,
     "eqeqeq": 0,
-    "no-plusplus": 0
+    "no-plusplus": 0,
+    "prefer-destructuring": ["error", {
+      "array": false,
+      "object": true
+    }],
+    "no-param-reassign": ["error", {
+      "props": false
+    }]
   }
 }
