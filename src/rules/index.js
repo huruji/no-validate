@@ -159,7 +159,19 @@ const rules = {
 
       return result
     }
-  }
+  },
+  number() {
+    return value => typeof value === 'number'
+  },
+  array() {
+    return value => Array.isArray(value)
+  },
+  string() {
+    return value => typeof value === 'string'
+  },
+  boolean() {
+    return value => typeof value === 'boolean'
+  },
 };
 
 export default rules;
