@@ -28,17 +28,5 @@ export default {
   },
   positive() {
     return value => value >= 0;
-  },
-  uaIOS() {
-
-  },
-  uaAndroid() {
-
-  },
-  uaWX() {
-
-  },
-  uaQQ() {
-
-  },
+  }
 }
