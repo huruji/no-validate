@@ -6,7 +6,10 @@ class Context {
 
   addRule(rule) {
     return (...args) => {
-      this.rules.push(rule.apply(this, args));
+      this.rules.push({
+        fn: rule.apply(this, args),
+        name: rule.name
+      });
       return this;
     }
   }
@@ -24,7 +27,7 @@ class Context {
   test(value) {
     let result = true;
     for (let i = 0; i < this.rules.length; i++) {
-      let fn = this.rules[i];
+      let fn = this.rules[i].fn;
       if (this.modifies[i]) {
         for (let j = 0; j < this.modifies[i].length; j++) {
           fn = this.modifies[i][j].apply(this)(fn);
@@ -39,7 +42,7 @@ class Context {
   testAll(value) {
     const result = [];
     for (let i = 0; i < this.rules.length; i++) {
-      let fn = this.rules[i];
+      let fn = this.rules[i].fn;
       if (this.modifies[i]) {
         for (let j = 0; j < this.modifies[i].length; j++) {
           fn = this.modifies[i][j].apply(this)(fn);
@@ -48,6 +51,33 @@ class Context {
       result.push(fn(value));
     }
     return result;
+  }
+
+  testPlus(value, errs) {
+    let result = true;
+    let info = null;
+    let step = 1;
+    for (let i = 0; i < this.rules.length; i++) {
+      let fn = this.rules[i].fn;
+      if (this.modifies[i]) {
+        for (let j = 0; j < this.modifies[i].length; j++) {
+          fn = this.modifies[i][j].apply(this)(fn);
+        }
+      }
+      result = fn(value);
+      step = i + 1;
+      if (!result) return result;
+    }
+    if (Array.isArray(errs)) {
+      info = errs[step - 1] ? errs[step - 1] : null;
+    } else if (typeof errs === 'object') {
+      const key = info[this.rules[step - 1].name]
+      info = errs[key]
+    }
+    return {
+      result,
+      info
+    };
   }
 
 

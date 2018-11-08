@@ -23,7 +23,7 @@
     "no-plusplus": 0,
     "prefer-destructuring": ["error", {
       "array": false,
-      "object": true
+      "object": false
     }],
     "no-param-reassign": ["error", {
       "props": false
