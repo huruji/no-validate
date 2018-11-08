@@ -137,3 +137,13 @@ test('modifies some', () => {
   expect(noV().some.minLength(5).test(['huruji', 'n', 'no', 'noV'])).toBe(true);
   expect(noV().some.first('n').test(['von', 'ovn', 'vno'])).toBe(false);
 })
+
+// test('test testplus', () => {
+//   expect(noV().minLength(3).first('n').testPlus('novs', {
+//     minLength: '123',
+//     first: '456'
+//   })).toBe({
+//     result: true,
+//     info: '456'
+//   })
+// })

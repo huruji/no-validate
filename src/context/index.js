@@ -71,8 +71,8 @@ class Context {
     if (Array.isArray(errs)) {
       info = errs[step - 1] ? errs[step - 1] : null;
     } else if (typeof errs === 'object') {
-      const key = info[this.rules[step - 1].name]
-      info = errs[key]
+      const key = this.rules[step - 1].name;
+      info = errs[key];
     }
     return {
       result,
