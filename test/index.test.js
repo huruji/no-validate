@@ -111,7 +111,17 @@ test('rules falsyObj', () => {
       b: 2,
       c: null
     }
+  })).toBe(true);
+  expect(noV().falsyObj().test({
+    a: '',
+    b: {
+      c: []
+    }
   })).toBe(true)
+  expect(noV().falsyObj().test({
+    a: 'noV',
+    b: {}
+  })).toBe(false)
 })
 
 test('modifies every', () => {

@@ -138,7 +138,7 @@ const rules = {
       if (typeof value === 'object') {
         const tempV = Object.assign({}, value);
 
-        if (del) {
+        if (del && defObj) {
           const keys = Object.keys(defObj);
           for (let i = 0; i < keys.length; i++) {
             if (utils.get(tempV, `${keys[i]}`) !== defObj[keys[i]]) {
@@ -153,10 +153,14 @@ const rules = {
         for (let i = 0; i < tempVKeys.length; i++) {
           if (typeof tempV[tempVKeys[i]] === 'object') {
             result = check(tempV[tempVKeys[i]], false);
+            console.log(result);
             if (!result) break
+          } else if (tempV[tempVKeys[i]]) {
+            result = false;
+            break;
           }
         }
-      } else if (value !== null && value !== undefined && value !== '') result = false;
+      } else if (value !== null && value !== undefined && value !== '' && value !== false) result = false;
 
       return result
     }
