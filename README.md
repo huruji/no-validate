@@ -1,6 +1,6 @@
 # noV
 
-使用**Proxy**实现的优雅的校验系统，目前已应用在**百万DAU**的线上产品中。
+使用**Proxy**实现的优雅的、流畅的校验系统，目前已应用在**百万DAU**的线上产品中。
 
 ## 安装
 
@@ -25,6 +25,19 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 ## API
 
 ### 规则（Rule）
+
+#### Type
+|               |                                                   | 例子                                  |
+| ------------- | ------------------------------------------------- | ------------------------------------- |
+| **number()**  | 类型为数字                                        | `noV().number().test(6)`              |
+| **array()**   | 类型为数组                                        | `noV().array().test(['n', 'o', 'V'])` |
+| **string()**  | 类型为字符串                                      | `noV().string().test('nov')`          |
+| **boolean()** | 类型为布尔值                                      | `noV().boolean().test(true)`          |
+| **float()**   | 类型为小数                                        | `noV().float().test(1.2)`             |
+| **nan()**     | 值是NaN                                           | `noV().nan().test(NaN)`               |
+| **null()**    | 值是null                                          | `noV().null().test(null)`             |
+| **object()**  | 类型是对象object                                  | `noV().object().test(new Date())`     |
+| **type(ty)**  | 精确校验类型（内部使用Object.prototype.toString） | `noV().type('RegExp').test(/^\d+$/)`  |
 
 #### Number
 |                     |            | 例子                         |
@@ -87,3 +100,7 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 | **.every** | 对接下来的规则使用every（所有数据符合规则则返回true） | `noV().every.gt(6).test([1, 2, 3, 8])`            |
 
 ### 校验
+|                    |                                                                        | 例子                                           |
+| ------------------ | ---------------------------------------------------------------------- | ---------------------------------------------- |
+| **test(value)**    | 对value按照rules顺序进行校验，遇到校验不通过将终止校验，返回一个布尔值 | `noV().gt(6).test(7)`                          |
+| **testAll(value)** | 按rules顺序校验，遇到不通过不终止，返回一个由布尔值组成的数组          | `noV().minLength(2).startWith('n')test('noV')` |

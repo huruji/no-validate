@@ -2,7 +2,6 @@ import validation from '../index'
 
 const noV = validation
 
-
 test('rules equal', () => {
   expect(noV().equal('huruji').test()).toBe(false);
   expect(noV().equal(1).test('1')).toBe(true);
