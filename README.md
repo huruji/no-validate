@@ -79,19 +79,31 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 | **uaWX()**           | 浏览器ua在微信环境(需要传递UA字符串)           | `noV().uaWX().test(navigator.userAgent)`      |
 | **uaQQ()**           | 浏览器ua在QQ环境(需要传递UA字符串)             | `noV().uaQQ().test(navigator.userAgent)`      |
 | **json()**           | 字符串是json字符串（可用JSON.parse()方法解析） | `noV().json().test('{}')`                     |
+| **empty()**          | 字符串为空字符串                               | `noV().empty().test('noV')`                   |
 
 #### Array
 
-|                      |                  | 例子                                         |
-| -------------------- | ---------------- | -------------------------------------------- |
-| **length(min, max)** | 数组长度范围     | `noV().length(1, 5).test([1, 2, 3])`         |
-| **minLength(value)** | 数组长度最小值   | `noV().minLength(2).test([1, 2, 3])`         |
-| **maxLength(value)** | 数组长度最大值   | `noV().maxLength(6).test([1, 2, 3])`         |
-| **first(value)**     | 数组第一个元素   | `noV().first('n').test(['n', 'o', 'V'])`     |
-| **end(value)**       | 数组最后一个元素 | `noV().end('V').teest(['n', 'o', 'V'])`      |
-| **startWith(value)** | 数组第一个元素   | `noV().startWith('n').test(['n', 'o', 'V'])` |
-| **endWith(value)**   | 数组最后一个元素 | `noV().endWith('t').test(['n', 'o', 'V'])`   |
+|                      |                      | 例子                                         |
+| -------------------- | -------------------- | -------------------------------------------- |
+| **length(min, max)** | 数组长度范围         | `noV().length(1, 5).test([1, 2, 3])`         |
+| **minLength(value)** | 数组长度最小值       | `noV().minLength(2).test([1, 2, 3])`         |
+| **maxLength(value)** | 数组长度最大值       | `noV().maxLength(6).test([1, 2, 3])`         |
+| **first(value)**     | 数组第一个元素       | `noV().first('n').test(['n', 'o', 'V'])`     |
+| **end(value)**       | 数组最后一个元素     | `noV().end('V').teest(['n', 'o', 'V'])`      |
+| **startWith(value)** | 数组第一个元素       | `noV().startWith('n').test(['n', 'o', 'V'])` |
+| **endWith(value)**   | 数组最后一个元素     | `noV().endWith('t').test(['n', 'o', 'V'])`   |
+| **unique()**         | 数组元素是否唯一     | `noV().unique().test([1, 2, 3, 1])`          |
+| **contains(search)** | 数组中是否包含某元素 | `noV().contains(2).test([1, 2, 3])`          |
+| **empty()**          | 数组为空数组         | `noV().empty().test([])`                     |
 
+
+#### 
+
+#### Object
+|                     |                                                                                                                    | 例子                                                  |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| **empty()**         | 对象为空对象                                                                                                       | `noV().length(1, 5).test([1, 2, 3])`                  |
+| **falsyObj(value)** | 对象的键值是否全为falsy的值，其中value可指定为对象中的某些值为默认值，**这在校验你的对象是否被修改的时候非常有用** | `oV().falsyObj({'a.b': 2}).test({a: {b: 2,c: null}})` |
 ### 修饰符
 |            |                                                       | 例子                                              |
 | ---------- | ----------------------------------------------------- | ------------------------------------------------- |
