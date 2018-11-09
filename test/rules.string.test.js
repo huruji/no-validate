@@ -1,3 +1,7 @@
+import {
+  Base64
+} from 'js-base64'
+
 import validation from '../index'
 
 const noV = validation
@@ -34,4 +38,32 @@ test('string rules url', () => {
   urls.forEach((e) => {
     expect(noV().url().test(e)).toBe(true);
   })
+})
+
+test('string rules base64', () => {
+  expect(noV().base64().test(Base64.encode('noV'))).toBe(true);
+  expect(noV().base64().test(Base64.encode('灰风也叫忽如寄'))).toBe(true);
+})
+
+test('string rules json', () => {
+  const name = ['n', 'o', 'V']
+  const person = {
+    name: 'nov',
+    age: 12
+  }
+
+  expect(noV().json().test(JSON.stringify(name))).toBe(true);
+  expect(noV().json().test(JSON.stringify(name).slice(2))).toBe(false);
+  expect(noV().json().test(JSON.stringify(person))).toBe(true);
+})
+
+
+test('string rules hex', () => {
+  expect(noV().hex().test('fff')).toBe(true)
+  expect(noV().hex().test('f5f5fh')).toBe(false)
+})
+
+test('strin rules ip', () => {
+  expect(noV().ip().test('8.8.8.8')).toBe(true)
+  expect(noV().ip().test('192.168.1.1')).toBe(true)
 })

@@ -32,5 +32,8 @@
     "regenerator-runtime": "^0.12.1",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "js-base64": "^2.4.9"
   }
 }
