@@ -24,6 +24,6 @@ export default {
     return value => (typeof value === 'object' && !Array.isArray(value) && value !== null)
   },
   type(ty) {
-    return value => Object.prototype.toString.call(value).march(/^\[object\s(.*)\]$/)[1] === ty.toLowerCase()
+    return value => Object.prototype.toString.call(value).match(/^\[object\s(.*)\]$/)[1].toLowerCase() === ty.toLowerCase()
   },
 }
