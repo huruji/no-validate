@@ -9,6 +9,7 @@ test('test testplus', () => {
     first: '456'
   })).toEqual({
     result: true,
+    step: 2,
     info: '456'
   })
 })

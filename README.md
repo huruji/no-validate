@@ -16,6 +16,43 @@ import noV from 'nov';
 noV().maxLength().test(myValue);
 ```
 
+验证表单最常见的邮箱、手机号码：
+
+```js
+noV().email().test(myEmail);
+
+noV().email().test(myPhone);
+```
+
+或许你还想要验证用户设置的密码是否符合你的规则，假设我们规定密码的规则是长度为至少为6位，并且至少包含数字和字母
+那么我们可以使用类似链式一样的操作（但是实际上，只有我们调用了test方法后，校验阶段才会开始）
+```js
+noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password)
+```
+
+
+
+或许有时候你还想取反其中的某个验证规则，这个时候你可以使用 `not` 这个修饰符：
+
+```js
+noV().not.range(5,7).test(myStr)
+```
+
+这个时候意味着 `myStr` 的长度小于5或者大于7才会返回 `true`。
+
+**这当然还不够**
+
+如果你想要知道校验失败时具体是哪条规则没有通过，你可以使用 `testPlus` 方法，这个方法将会返回一个对象，包含result与step字段的对象
+
+假如我们规定标题长度需要大于4个字符，并且最后必须要以问号结尾，我们可以使用 `testPlus` 方法来精确了解到我们的校验规则具体的执行结果：
+
+```
+const result = noV().minLength(5).pattern(/(\?|？)$/).testPlus(myTitle)
+```
+
+如果 `myTitle` 在第二个校验规则失败了，那么这个 `result` 对象将会是
+
+
 ### 使用修饰符
 
 ```js

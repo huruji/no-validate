@@ -66,7 +66,9 @@ class Context {
       }
       result = fn(value);
       step = i + 1;
-      if (!result) return result;
+      if (!result) {
+        break;
+      }
     }
     if (Array.isArray(errs)) {
       info = errs[step - 1] ? errs[step - 1] : null;
@@ -76,6 +78,7 @@ class Context {
     }
     return {
       result,
+      step,
       info
     };
   }
