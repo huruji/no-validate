@@ -50,7 +50,51 @@ noV().not.range(5,7).test(myStr)
 const result = noV().minLength(5).pattern(/(\?|？)$/).testPlus(myTitle)
 ```
 
-如果 `myTitle` 在第二个校验规则失败了，那么这个 `result` 对象将会是
+如果 `myTitle` 在第二个校验规则失败了，那么这个 `result` 对象将会是：
+
+```js
+{
+  result: false,
+  step: 2
+}
+```
+
+有了这个信息我们可以很方便地针对每一个校验失败进行特定的处理，最常见的就是告诉用户需要怎样修改：
+```js
+const errors = [
+  '请最少输入5个字符',
+  '标题须以问号结尾'
+]
+
+modal.show(errors[result.step -1]);
+```
+
+为了更加方便一点，noV允许将这些额外的信息作为第二个参数传递给 `testPlus` 方法，如：
+```js
+const result = noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password, errors)
+```
+这样，result对象将会把这些额外的信息作为 `info` 字段的值：
+
+```js
+{
+  result: false,
+  step: 2,
+  info: '标题须以问号结尾'
+}
+```
+
+我们需要知道的是，传递给 `testPlus` 方法的额外信息不仅仅可以数组，还可以是一个以 **规则名** 为key的对象，上面的等价于：
+
+```js
+const errors = {
+  minLength: ''请最少输入5个字符',
+  pattern: '标题须以问号结尾'
+}
+
+const result = noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password, errors)
+```
+
+这样，如果你的校验规则需要经常修改，那么你也不会那么被动。
 
 
 ### 使用修饰符
