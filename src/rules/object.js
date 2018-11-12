@@ -34,4 +34,7 @@ export default {
       return result
     }
   },
+  required(...args) {
+    return value => (args.every(e => Object.keys(value).indexOf(e) > -1))
+  }
 }
