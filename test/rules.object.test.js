@@ -22,3 +22,18 @@ test('rules falsyObj', () => {
     b: {}
   })).toBe(false)
 })
+
+test('rule required', () => {
+  expect(noV().required('name', 'age').test({
+    name: 'nov',
+    age: '1'
+  })).toBe(true);
+  expect(noV().required('name', 'age').test({
+    name: null,
+    age: 12
+  }))
+  expect(noV().required('name', 'age', 'sex').test({
+    name: 'nov',
+    age: '12'
+  })).toBe(false)
+})
