@@ -12,4 +12,15 @@ test('test testplus', () => {
     step: 2,
     info: '456'
   })
+
+  expect(noV().minLength(1).maxLength(3).first('n')
+    .testPlus('noVs', {
+      minLength: 'mingLength',
+      maxLength: 'maxLength',
+      first: 'first'
+    })).toEqual({
+    result: false,
+    step: 2,
+    info: 'maxLength'
+  })
 })
