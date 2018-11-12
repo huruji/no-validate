@@ -21,7 +21,7 @@ noV().maxLength().test(myValue);
 ```js
 noV().email().test(myEmail);
 
-noV().email().test(myPhone);
+noV().phoneNumber().test(myPhone);
 ```
 
 或许你还想要验证用户设置的密码是否符合你的规则，假设我们规定密码的规则是长度为至少为6位，并且至少包含数字和字母
