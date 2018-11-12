@@ -87,9 +87,9 @@ const result = noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password, 
 
 ```js
 const errors = {
-  minLength: ''请最少输入5个字符',
+  minLength: '请最少输入5个字符',
   pattern: '标题须以问号结尾'
-}
+};
 
 const result = noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password, errors)
 ```
