@@ -18,6 +18,7 @@ const config = {
 }
 
 const serverConfig = Object.assign({}, config);
+serverConfig.output = Object.assign({}, config.output)
 serverConfig.target = 'node';
 serverConfig.output.filename = 'noV.node.js';
 
