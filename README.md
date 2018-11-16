@@ -31,7 +31,6 @@ noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password)
 ```
 
 
-
 或许有时候你还想取反其中的某个验证规则，这个时候你可以使用 `not` 这个修饰符：
 
 ```js
@@ -198,3 +197,4 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 | ------------------ | ---------------------------------------------------------------------- | ---------------------------------------------- |
 | **test(value)**    | 对value按照rules顺序进行校验，遇到校验不通过将终止校验，返回一个布尔值 | `noV().gt(6).test(7)`                          |
 | **testAll(value)** | 按rules顺序校验，遇到不通过不终止，返回一个由布尔值组成的数组          | `noV().minLength(2).startWith('n')test('noV')` |
+| **testPlus(value [,infoOptions])** | 校验rules的结果并返回一个由 `step` 和 `result` 字段组成的对象，同时可通过 `infoOptions` 设置额外的信息，         | `noV().minLength(1).maxLength(3).firs('n').testPlus('noVs', {minLength: 'mingLength',maxLength: 'maxLength',first: 'first'})` |
