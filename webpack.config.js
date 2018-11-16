@@ -6,7 +6,9 @@ const config = {
   },
   output: {
     filename: 'noV.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    library: 'noV',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [{
