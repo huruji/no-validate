@@ -39,9 +39,9 @@ export default {
     return (value) => {
       let result = false;
       if (typeof value === 'string' || Array.isArray(value)) {
-        result = !!value.length
+        result = !value.length
       } else if (typeof value === 'object' && value !== null) {
-        result = !!Object.keys(value).length;
+        result = !Object.keys(value).length;
       } else if (typeof value === 'undefined' || value === null) {
         result = true
       }
