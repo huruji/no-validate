@@ -53,3 +53,9 @@ test('base rules endWith', () => {
 test('base rules pattern', () => {
   expect(noV().pattern(/^n/).test('noV')).toBe(true);
 })
+
+test('base rules empty', () => {
+  expect(noV().empty().test({ first: undefined, last: 'noV' })).toBe(false);
+  expect(noV().empty().test('noV')).toBe(false);
+  expect(noV().not.empty().test({ first: undefined, last: 'noV' })).toBe(true);
+})
