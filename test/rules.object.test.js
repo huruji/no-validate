@@ -32,7 +32,7 @@ test('rule required', () => {
     name: null,
     age: 12
   }))
-  expect(noV().required('name', 'age', 'sex').test({
+  expect(noV().required('name', 'sex').test({
     name: 'nov',
     age: '12'
   })).toBe(false)
