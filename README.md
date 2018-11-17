@@ -95,11 +95,16 @@ const result = noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password, 
 
 这样，如果你的校验规则需要经常修改，那么你也不会那么被动。
 
-
-### 使用修饰符
+鉴于笔者目前的工作以及前端多端环境的复杂，nov 还提供了对于UA校验的规则，包括对 `Android` 、 `IOS` 、 微信、QQ环境的校验，这通常在你的应用需要对不同环境适配（如果你的应用使用了微信、或者QQ的js-SDK，这将非常有用），例如：
 
 ```js
-noV.every.email().some.last('qq.com').test([email1, email2, email3])
+noV().uaIOS().test(navigator.userAgent);
+
+noV().uaAndroid().test(navigator.userAgent);
+
+noV().uaWX().test(navigator.userAgent);
+
+noV().uaQQ().test(navigator.userAgent)
 ```
 
 ## API
@@ -193,8 +198,8 @@ noV.every.email().some.last('qq.com').test([email1, email2, email3])
 | **.every** | 对接下来的规则使用every（所有数据符合规则则返回true） | `noV().every.gt(6).test([1, 2, 3, 8])`            |
 
 ### 校验
-|                    |                                                                        | 例子                                           |
-| ------------------ | ---------------------------------------------------------------------- | ---------------------------------------------- |
-| **test(value)**    | 对value按照rules顺序进行校验，遇到校验不通过将终止校验，返回一个布尔值 | `noV().gt(6).test(7)`                          |
-| **testAll(value)** | 按rules顺序校验，遇到不通过不终止，返回一个由布尔值组成的数组          | `noV().minLength(2).startWith('n')test('noV')` |
-| **testPlus(value [,infoOptions])** | 校验rules的结果并返回一个由 `step` 和 `result` 字段组成的对象，同时可通过 `infoOptions` 设置额外的信息，         | `noV().minLength(1).maxLength(3).firs('n').testPlus('noVs', {minLength: 'mingLength',maxLength: 'maxLength',first: 'first'})` |
+|                                    |                                                                                                          | 例子                                                                                                                          |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **test(value)**                    | 对value按照rules顺序进行校验，遇到校验不通过将终止校验，返回一个布尔值                                   | `noV().gt(6).test(7)`                                                                                                         |
+| **testAll(value)**                 | 按rules顺序校验，遇到不通过不终止，返回一个由布尔值组成的数组                                            | `noV().minLength(2).startWith('n')test('noV')`                                                                                |
+| **testPlus(value [,infoOptions])** | 校验rules的结果并返回一个由 `step` 和 `result` 字段组成的对象，同时可通过 `infoOptions` 设置额外的信息， | `noV().minLength(1).maxLength(3).firs('n').testPlus('noVs', {minLength: 'mingLength',maxLength: 'maxLength',first: 'first'})` |
