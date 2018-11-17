@@ -1,3 +1,7 @@
+<p style="height: 200px; margin:auto">
+  <img style="height: 100%; width: auto" src="./logo.jpg"/>
+</p>
+
 # noV
 
 使用**Proxy**实现的优雅的、流畅的校验系统，目前已应用在**百万DAU**的线上产品中。
