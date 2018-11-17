@@ -1,5 +1,5 @@
-<p style="height: 200px; margin:auto">
-  <img style="height: 100%; width: auto" src="./logo.jpg"/>
+<p style="height:auto">
+  <img style="width: 200px; margin: auto" src="./logo.jpg"/>
 </p>
 
 # noV
