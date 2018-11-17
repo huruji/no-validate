@@ -6,7 +6,7 @@ const config = {
   },
   output: {
     filename: 'noV.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'lib'),
     library: 'noV',
     libraryTarget: 'umd'
   },
@@ -19,9 +19,9 @@ const config = {
   mode: 'production',
 }
 
-const serverConfig = Object.assign({}, config);
-serverConfig.output = Object.assign({}, config.output)
-serverConfig.target = 'node';
-serverConfig.output.filename = 'noV.node.js';
+// const serverConfig = Object.assign({}, config);
+// serverConfig.output = Object.assign({}, config.output)
+// serverConfig.target = 'node';
+// serverConfig.output.filename = 'noV.node.js';
 
-module.exports = [config, serverConfig];
+module.exports = [config];
