@@ -9,13 +9,13 @@
 ## 安装
 
 ```bash
-npm install --dev-save nov
+npm install --dev-save no-validate
 ```
 
 ## 使用
 
 ```js
-import noV from 'nov';
+import noV from 'no-validate';
 
 noV().maxLength().test(myValue);
 ```

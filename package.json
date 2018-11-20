@@ -1,13 +1,15 @@
 {
-  "name": "noV",
-  "version": "1.0.0",
+  "name": "no-validate",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/noV.js",
   "scripts": {
     "build": "set BABEL_ENV=build && webpack --config webpack.config.js",
     "test": "jest",
     "lint": "eslint src/* test/* index.js",
-    "release": "standard-version"
+    "release": "standard-version",
+    "first-release": "standard-version",
+    "publish": "npm publish --registry https://registry.npmjs.org/"
   },
   "pre-commit": [
     "lint",
@@ -40,6 +42,7 @@
   },
   "dependencies": {},
   "files": [
-    "lib"
+    "lib",
+    "logo.png"
   ]
 }
