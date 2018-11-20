@@ -74,7 +74,7 @@ modal.show(errors[result.step -1]);
 
 为了更加方便一点，noV允许将这些额外的信息作为第二个参数传递给 `testPlus` 方法，如：
 ```js
-const result = noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).test(password, errors)
+const result = noV().minLength(6).pattern(/[a-z]?[0-9]+[a-z]+/i).testplus(password, errors)
 ```
 这样，result对象将会把这些额外的信息作为 `info` 字段的值：
 
