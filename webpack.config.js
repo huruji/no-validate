@@ -8,7 +8,9 @@ const config = {
     filename: 'noV.js',
     path: path.resolve(__dirname, 'lib'),
     library: 'noV',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
+    globalObject: "typeof self !== 'undefined' ? self : this"
   },
   module: {
     rules: [{
